@@ -1,22 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, Button, Alert, TouchableOpacity, View } from 'react-native';
-import { StackNavigator } from 'react-navigation';
 
-export default class Start extends React.Component {
-  addAmount = ()=>{
-    console.log('clicked', this.props.navigation.navigate);
-    this.props.navigation.navigate('Amount')
-  }
-
+export default class Confirm extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
-        <Text style={styles.greeting}>Want to help?</Text>
+        <Text style={styles.greeting}>Your Donation: {this.props.navigation.state.params.donation}</Text>
         <View style={styles.button}>
-          <TouchableOpacity onPress={() => navigate('Amount')}>
+          <TouchableOpacity onPress={() => navigate('Thankyou')}>
             <View style={styles.button}>
-              <Text style={styles.buttonText}>Donate now!</Text>
+              <Text style={styles.buttonText}>Confirm</Text>
             </View>
           </TouchableOpacity>
         </View>

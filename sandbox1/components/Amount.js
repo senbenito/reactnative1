@@ -1,16 +1,24 @@
 import React from 'react'
-import { StyleSheet, Text, Button, Alert, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, Button, TextInput, TouchableOpacity, View } from 'react-native';
 
 export default class Amount extends React.Component {
-
+  constructor(props) {
+    super(props);
+    this.state = {text: ''};
+  }
   render(){
+    const { navigate } = this.props.navigation;
+    console.log(this.state.amount);
     return (
       <View style={styles.container}>
-        <Text style={styles.greeting}>Choose an amount</Text>
-        <Text style={styles.greeting}>$10</Text>
-        <Text style={styles.greeting}>$100</Text>
+        <Text style={styles.greeting}>Specify an amount:</Text>
+        <TextInput
+           style={styles.amount}
+           placeholder="Click and Type"
+           onChangeText={(text) => this.setState({text})}
+         />
         <View style={styles.button}>
-          <TouchableOpacity onPress={this._onPressButton}>
+          <TouchableOpacity onPress={()=>navigate('Confirm', {donation: this.state.text})}>
             <View style={styles.button}>
               <Text style={styles.buttonText}>Donate now!</Text>
             </View>
@@ -31,6 +39,11 @@ const styles = StyleSheet.create({
   },
   greeting:{
     fontSize: 30,
+  },
+  amount:{
+    fontSize: 30,
+    height: 40,
+    color: '#073e87',
   },
   button:{
     margin: 20,
