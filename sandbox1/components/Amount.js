@@ -36,14 +36,19 @@ const styles = StyleSheet.create({
     backgroundColor: '#0d8ccb',
     alignItems: 'center',
     justifyContent: 'center',
+    flexDirection: 'column',
   },
   greeting:{
     fontSize: 30,
+    fontFamily: 'Avenir',
+    color: '#ffffff',
   },
   amount:{
     fontSize: 30,
     height: 40,
+    margin: 50,
     color: '#073e87',
+    fontFamily: 'Avenir',
   },
   button:{
     margin: 20,

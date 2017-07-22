@@ -34,6 +34,8 @@ const styles = StyleSheet.create({
   },
   greeting:{
     fontSize: 30,
+    fontFamily: 'Avenir',
+    color: '#ffffff',
   },
   button:{
     margin: 20,

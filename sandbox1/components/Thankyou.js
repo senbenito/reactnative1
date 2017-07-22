@@ -21,5 +21,7 @@ const styles = StyleSheet.create({
   },
   greeting:{
     fontSize: 50,
+    fontFamily: 'Avenir',
+    color: '#ffffff',
   },
 });
