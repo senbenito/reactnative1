@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, Button, Alert, TouchableOpacity, View } from 'react-native';
 
+
 export default class Confirm extends React.Component {
   render() {
     const { navigate } = this.props.navigation;

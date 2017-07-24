@@ -1,29 +1,42 @@
 import React from 'react'
-import { StyleSheet, Text, Button, TextInput, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, Button, TextInput, TouchableHighlight, View, Image } from 'react-native';
+import { CreditCardInput } from "react-native-credit-card-input";
 
 export default class Amount extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {text: ''};
+    this.state = {
+      name: "Shannon",
+      email: "me@this.com",
+      ZIP: '80302',
+      form: {
+        values: {
+          number: "",
+          expiry: "",
+          cvc: "",
+        }
+      }
+    };
   }
+
+  onChange = (form) => {
+    this.setState({form: form});
+    console.log('state', this.state.form);
+  }
+
   render(){
     const { navigate } = this.props.navigation;
-    console.log(this.state.amount);
     return (
       <View style={styles.container}>
-        <Text style={styles.greeting}>Specify an amount:</Text>
         <TextInput
-           style={styles.amount}
-           placeholder="Click and Type"
-           onChangeText={(text) => this.setState({text})}
-         />
-        <View style={styles.button}>
-          <TouchableOpacity onPress={()=>navigate('Confirm', {donation: this.state.text})}>
-            <View style={styles.button}>
-              <Text style={styles.buttonText}>Donate now!</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
+        style={{height: 40, width: 250, borderColor: 'gray', borderWidth: 1}}
+        onChangeText={(ref) => {this.setState({name: ref}); console.log(ref)}}
+        ref='firstName'
+        value={this.state.name}
+        />
+
+        <Text> {this.state.form.values.number} </Text>
+        <CreditCardInput onChange={this.onChange} />
       </View>
     );
   }
@@ -32,27 +45,7 @@ export default class Amount extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#0d8ccb',
     alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'column',
-  },
-  greeting:{
-    fontSize: 30,
-    // fontFamily: 'Avenir',
-    color: '#ffffff',
-  },
-  amount:{
-    fontSize: 30,
-    height: 40,
-    margin: 50,
-    color: '#073e87',
-    // fontFamily: 'Avenir',
-  },
-  button:{
-    margin: 20,
-    backgroundColor: '#f4e375',
-    borderRadius: 25,
   }
 });
